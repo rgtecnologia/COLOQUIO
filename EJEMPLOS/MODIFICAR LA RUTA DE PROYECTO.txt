@@ -1,0 +1,27 @@
+MODIFICAR LA RUTA DE PROYECTO
+1. Configuración del archivo config.php
+Debes actualizar el archivo config.php en el directorio application/config para reflejar el nuevo nombre de la
+
+base_url : Cambia el valor de base_url para que apunte a la nueva URL.
+
+$config['base_url'] = 'http://localhost/ejemploCRUD1/';
+
+2. Archivos de Vista
+Si en tus vistas tienes enlaces absolutos que apuntan a la carpeta ejemploCRUD, tendrás que actualizarlos para que apunten a ejemploCRUD1. 
+
+Por ejemplo, en tus archivos de vista, cambia:
+<link rel="stylesheet" type="text/css" href="http://localhost/ejemploCRUD/css/bootstrap.css">
+<script type="text/javascript" language="javascript" src="http://localhost/ejemploCRUD/js/jquery.js"></script>
+
+Por:
+
+<link rel="stylesheet" type="text/css" href="http://localhost/ejemploCRUD1/css/bootstrap.css">
+<script type="text/javascript" language="javascript" src="http://localhost/ejemploCRUD1/js/jquery.js"></script>
+
+4. Controladores y Modelos
+En general, los controladores y modelos no deben tener referencias directas al nombre de la carpeta del proyecto, ya que utilizan rutas relativas. Sin embargo, verifique que no haya ninguna referencia directa en estos archivos.
+
+resumen
+Actualiza base_url en application/config/config.php.
+Actualiza enlaces en los archivos de vista ( .php).
+Verifique cualquier referencia directa al antiguo nombre de la carpeta en otros archivos.

@@ -1,0 +1,38 @@
+CONTROLADOR
+public function create() {
+    $this->load->view('header');
+    if ($this->input->post()) {
+        $data = array(
+            'nombre' => $this->input->post('nombre'),
+            'carga_horaria' => $this->input->post('carga_horaria'),
+            'ciclo' => $this->input->post('ciclo'),
+            'carrera' => $this->input->post('carrera'),
+            'descripcion' => $this->input->post('descripcion') // Nueva columna (PARA QUE APAREZCA TAMBIEN SE DEBE CREAR EN LA BD MATERIAS POR EJEMPLO)
+
+        );
+        $this->Materia_model->SaveMateria($data);
+        redirect('materias');
+    } else {
+        $this->load->view('materias/create');
+    }
+    $this->load->view('footer');
+}
+
+public function edit($id) {
+    $this->load->view('header');
+    if ($this->input->post()) {
+        $data = array(
+            'nombre' => $this->input->post('nombre'),
+            'carga_horaria' => $this->input->post('carga_horaria'),
+            'ciclo' => $this->input->post('ciclo'),
+            'carrera' => $this->input->post('carrera'),
+            'descripcion' => $this->input->post('descripcion') // Nueva columna (PARA QUE APAREZCA TAMBIEN SE DEBE CREAR EN LA BD MATERIAS POR EJEMPLO)
+        );
+        $this->Materia_model->Edit($data, $id);
+        redirect('materias');
+    } else {
+        $data['materia'] = $this->Materia_model->BuscarID($id);
+        $this->load->view('materias/edit', $data);
+    }
+    $this->load->view('footer');
+}
